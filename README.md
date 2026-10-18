@@ -6,7 +6,9 @@ Framer Motion.
 
 ## Live site
 
-Deployed on Vercel: _link added after the first deployment_
+**Live:** <https://meow-gop.vercel.app>
+
+Deployed on Vercel (Vite preset, auto-deploys from `main`).
 
 ## Tech stack
 
