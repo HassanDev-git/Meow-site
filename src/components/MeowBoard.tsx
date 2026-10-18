@@ -215,7 +215,7 @@ export default function MeowBoard() {
                   className="h-1 w-16 min-w-0 flex-1 accent-[#2b2118] sm:w-32 sm:flex-none"
                   aria-label="Tempo"
                 />
-                <span className="w-12 text-right font-display text-xs font-700 tabular-nums sm:w-14">
+                <span className="w-14 shrink-0 text-right font-display text-xs font-700 tabular-nums">
                   {bpm} BPM
                 </span>
               </div>
