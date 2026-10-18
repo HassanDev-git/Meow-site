@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fff3e2;
+  --color-cream-deep: #ffe8cc;
+  --color-ink: #2b2118;
+  --color-coral: #ff5d5d;
+  --color-butter: #ffc53d;
+  --color-mint: #54d1b2;
+  --color-sky: #7fb5ff;
+  --color-blush: #ff9ec7;
+  --color-fur: #ffae52;
+  --color-fur-deep: #f0953a;
+
+  --font-display: "Unbounded", sans-serif;
+  --font-body: "Outfit", sans-serif;
+  --font-hand: "Gochi Hand", cursive;
+
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-900: 900;
+}
+
+.font-700 {
+  font-weight: 700;
+}
+.font-800 {
+  font-weight: 800;
+}
+.font-900 {
+  font-weight: 900;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-coral);
+  color: var(--color-cream);
+}
+
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* ---------- utilities ---------- */
+
+.shadow-hard {
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+.shadow-hard-sm {
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
+.shadow-hard-lg {
+  box-shadow: 10px 10px 0 var(--color-ink);
+}
+.shadow-hard-none {
+  box-shadow: 0 0 0 var(--color-ink);
+}
+
+.text-outline {
+  -webkit-text-stroke: 2.5px var(--color-ink);
+  color: transparent;
+}
+.text-outline-cream {
+  -webkit-text-stroke: 2.5px var(--color-cream);
+  color: transparent;
+}
+
+.sticker {
+  border: 3px solid var(--color-ink);
+  background: #fffdf8;
+}
+
+.noise-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(43, 33, 24, 0.04) 0 2px,
+      transparent 2px
+    ),
+    radial-gradient(circle at 75% 75%, rgba(43, 33, 24, 0.04) 0 2px, transparent 2px);
+  background-size: 14px 14px, 18px 18px;
+}
+
+/* ---------- keyframes ---------- */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-12px) rotate(var(--rot, 0deg));
+  }
+}
+
+@keyframes knead-left {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  12%,
+  58% {
+    transform: translateY(9px) scaleY(0.92);
+  }
+  70% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes knead-right {
+  0%,
+  35%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  47%,
+  83% {
+    transform: translateY(9px) scaleY(0.92);
+  }
+}
+
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes dash-rotate {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+.anim-marquee {
+  animation: marquee var(--marquee-dur, 22s) linear infinite;
+}
+.anim-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+.anim-floaty {
+  animation: floaty 5s ease-in-out infinite;
+}
+.anim-wiggle {
+  animation: wiggle 0.9s ease-in-out infinite;
+}
+.knead-l {
+  animation: knead-left var(--knead-dur, 2.6s) ease-in-out infinite;
+}
+.knead-r {
+  animation: knead-right var(--knead-dur, 2.6s) ease-in-out infinite;
+}
+
+/* film grain overlay */
+.grain {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 90;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* thin ink scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink);
+  border-radius: 99px;
+  border: 2px solid var(--color-cream);
+}
