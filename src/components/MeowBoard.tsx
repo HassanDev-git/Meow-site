@@ -203,8 +203,8 @@ export default function MeowBoard() {
             <p className="font-display text-xs font-700 uppercase tracking-[0.25em] text-ink/60">
               the gop sequencer
             </p>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 rounded-xl border-2 border-ink bg-cream px-3 py-1.5">
+            <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:flex-nowrap sm:gap-3">
+              <div className="flex min-w-0 flex-1 items-center gap-2 rounded-xl border-2 border-ink bg-cream px-3 py-1.5 sm:flex-none">
                 <Disc3 className={`size-4 ${playing ? "animate-spin" : ""}`} strokeWidth={2.5} />
                 <input
                   type="range"
@@ -212,23 +212,23 @@ export default function MeowBoard() {
                   max={170}
                   value={bpm}
                   onChange={(e) => setBpm(Number(e.target.value))}
-                  className="h-1 w-24 accent-[#2b2118] sm:w-32"
+                  className="h-1 w-16 min-w-0 flex-1 accent-[#2b2118] sm:w-32 sm:flex-none"
                   aria-label="Tempo"
                 />
-                <span className="w-14 text-right font-display text-xs font-700 tabular-nums">
+                <span className="w-12 text-right font-display text-xs font-700 tabular-nums sm:w-14">
                   {bpm} BPM
                 </span>
               </div>
               <button
                 onClick={() => setPattern(DEFAULT_PATTERN)}
                 aria-label="Reset pattern"
-                className="shadow-hard-sm grid size-10 place-items-center rounded-xl border-[3px] border-ink bg-cream transition-transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-hard-none"
+                className="shadow-hard-sm grid size-10 shrink-0 place-items-center rounded-xl border-[3px] border-ink bg-cream transition-transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-hard-none"
               >
                 <RotateCcw className="size-4" strokeWidth={2.5} />
               </button>
               <button
                 onClick={playing ? stop : play}
-                className="shadow-hard inline-flex items-center gap-2 rounded-xl border-[3px] border-ink bg-butter px-5 py-2.5 font-display text-sm font-800 transition-all hover:-translate-y-0.5 hover:shadow-hard-lg active:translate-y-0 active:shadow-hard-none"
+                className="shadow-hard inline-flex w-full items-center justify-center gap-2 rounded-xl border-[3px] border-ink bg-butter px-5 py-2.5 font-display text-sm font-800 transition-all hover:-translate-y-0.5 hover:shadow-hard-lg active:translate-y-0 active:shadow-hard-none sm:w-auto"
               >
                 {playing ? (
                   <Pause className="size-4 fill-ink" strokeWidth={2.5} />
