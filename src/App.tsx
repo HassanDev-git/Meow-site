@@ -9,6 +9,7 @@ import MeowBoard from "./components/MeowBoard";
 import GopGopMachine from "./components/GopGopMachine";
 import MeowDictionary from "./components/MeowDictionary";
 import Footer from "./components/Footer";
+import HireMePopup from "./components/HireMePopup";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -49,6 +50,7 @@ export default function App() {
       </main>
 
       <Footer />
+      <HireMePopup />
     </div>
   );
 }
