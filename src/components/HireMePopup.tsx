@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, X, MessageSquare } from "lucide-react";
+import { ExternalLink, X, Sparkles } from "lucide-react";
 
 export default function HireMePopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,10 +75,13 @@ export default function HireMePopup() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-[100] size-14 rounded-full bg-coral border-[3px] border-ink text-cream shadow-hard flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
+          className="fixed bottom-6 right-6 z-[100] group flex items-center gap-3 bg-coral border-[3px] border-ink text-cream px-4 py-3 rounded-2xl shadow-hard hover:translate-y-0.5 hover:shadow-none transition-all"
           aria-label="Open hire me popup"
         >
-          <MessageSquare className="size-6" strokeWidth={2.5} />
+          <div className="grid size-8 place-items-center rounded-lg bg-butter border-[2px] border-ink">
+            <Sparkles className="size-4 text-ink" strokeWidth={2.5} />
+          </div>
+          <span className="font-display text-sm font-800 whitespace-nowrap">Need a Website?</span>
         </motion.button>
       )}
     </>
